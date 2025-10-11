@@ -15,9 +15,66 @@
 
 ## Структура проекта
 - `Main.java` - главный класс с точкой входа и меню выбора
-- `Human.java` -
-- `Name.java` -
-- `Person.java` -
+- `Human.java` - создание сущности Человек, которая описывается: Имя: строка, Рост: целое число 
+- `Name.java` - создание сущности Имя, которая описывается тремя параметрами: Фамилия, Личное имя, 
+Отчество
+- `Person.java` - объединение сущности Человек из задачи 1.2 и Имя из задачи 1.3 
 
 
 ## Детальный анализ методов
+
+**Задание 1.2**
+
+<ins>Задача:</ins>
+
+Создайте сущность Человек, которая описывается: 
++ Имя: строка 
++ Рост: целое число 
+Может возвращать текстовое представление вида “Name, рост: height”, где Name и height это 
+переменная с именем и ростом. 
+Необходимо создать и вывести на экран следующих людей: 
++ Человек с именем “Клеопатра” и ростом 152 
++ Человек с именем “Пушкин ” и ростом 167 
++ Человек с именем “Владимир ” и ростом 189
+
+<ins>Метод решения:</ins>
+Создаётся 
+
+<ins>Код реализации:</ins>
+```
+public class Human
+{
+    private String name;
+    private int height;
+
+    public String getName() {
+        return name;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    @Override
+    public String toString() {
+        return this.name + ", рост: " + this.height;
+    }
+
+    //С параметрами
+    public Human(String name, int height) {
+        this.name = name;
+        this.height = height;
+    }
+}
+```
+
+<ins>Тесты:</ins>
+
