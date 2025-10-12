@@ -1,0 +1,34 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class City {
+    private String name; // название города
+    private List<Path> paths; // список исходящих путей
+
+    public City(String name) {
+        this.name = name;
+        this.paths = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void addPath(City toCity, int cost) {
+        paths.add(new Path(toCity, cost));
+    }
+
+    public List<Path> getPaths() {
+        return paths;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder(name + " -> ");
+        for (Path p : paths) {
+            sb.append(p.getCity().getName()).append(":").append(p.getCost()).append("  ");
+        }
+        return sb.toString().trim();
+    }
+}
+
