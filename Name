@@ -1,0 +1,48 @@
+public class Name
+{
+    private String surname;
+    private String name;
+    private String patronymic;
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPatronymic() {
+        return patronymic;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.patronymic = patronymic;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder empty = new StringBuilder();
+
+        if (surname != null) empty.append(surname).append(" ");
+        if (name != null) empty.append(name).append(" ");
+        if (patronymic != null) empty.append(patronymic).append(" ");
+
+        return empty.toString().trim();
+    }
+
+    public Name(String surname, String name, String patronymic) {
+        this.surname = (surname != null && !surname.isBlank()) ? surname : null;
+        this.name = (name != null && !name.isBlank()) ? name : null;
+        this.patronymic = (patronymic != null && !patronymic.isBlank()) ? patronymic : null;
+    }
+}
+
