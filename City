@@ -1,34 +1,48 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class City {
-    private String name; // название города
-    private List<Path> paths; // список исходящих путей
+    private String name;
+    private Map<City, Integer> ways;
 
     public City(String name) {
         this.name = name;
-        this.paths = new ArrayList<>();
+        this.ways = new HashMap<>();
     }
 
     public String getName() {
         return name;
     }
 
-    public void addPath(City toCity, int cost) {
-        paths.add(new Path(toCity, cost));
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public List<Path> getPaths() {
-        return paths;
+    public Map<City, Integer> getWays() {
+        return ways;
+    }
+
+    public void setWays(Map<City, Integer> ways) {
+        this.ways = ways;
+    }
+
+    public void addWays(City city, int way) {
+        ways.put(city, way);
     }
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder(name + " -> ");
-        for (Path p : paths) {
-            sb.append(p.getCity().getName()).append(":").append(p.getCost()).append("  ");
+        String result = name;
+        if (!ways.isEmpty()) {
+            result += " -> ";
+            boolean first = true;
+            for (Map.Entry<City, Integer> road : ways.entrySet()) {
+                if (!first) result += ", ";
+                result += road.getKey().name + ":" + road.getValue();
+                first = false;
+            }
         }
-        return sb.toString().trim();
+        return result;
     }
 }
 
