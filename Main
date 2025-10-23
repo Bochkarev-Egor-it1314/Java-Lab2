@@ -1,7 +1,5 @@
 import java.util.Scanner;
-import java.util.Random;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 public class Main {
 
@@ -16,7 +14,6 @@ public class Main {
         System.out.println("Выберите задание: ");
 
         Scanner scan = new Scanner(System.in);
-        Random random = new Random();
 
         if (scan.hasNextInt()) {
             int choice = scan.nextInt();
@@ -60,7 +57,7 @@ public class Main {
                 }
                 case 3:
                 {
-                    // Создаём города
+                    System.out.println("Задание 4");
                     City A = new City("A");
                     City B = new City("B");
                     City C = new City("C");
@@ -68,22 +65,25 @@ public class Main {
                     City E = new City("E");
                     City F = new City("F");
 
-                    // Добавляем пути (ориентированные рёбра с весами)
-                    A.addPath(D, 6);
-                    A.addPath(F, 1);
-                    A.addPath(B, 5);
-                    B.addPath(A, 5);
-                    B.addPath(C, 3);
-                    C.addPath(D, 4);
-                    C.addPath(B, 4);
-                    D.addPath(C, 4);
-                    D.addPath(E, 2);
-                    D.addPath(A, 6);
-                    E.addPath(F, 2);
-                    F.addPath(B, 1);
-                    F.addPath(E, 2);
+                    A.addWays(B, 5);
+                    A.addWays(D, 6);
+                    A.addWays(F, 1);
 
-                    // Выводим структуру городов
+                    B.addWays(A, 5);
+                    B.addWays(C, 3);
+
+                    C.addWays(B, 3);
+                    C.addWays(D, 4);
+
+                    D.addWays(A, 6);
+                    D.addWays(C, 4);
+                    D.addWays(E, 2);
+
+                    E.addWays(F, 2);
+
+                    F.addWays(B, 1);
+                    F.addWays(E, 2);
+
                     System.out.println(A);
                     System.out.println(B);
                     System.out.println(C);
@@ -95,31 +95,33 @@ public class Main {
                 }
                 case 4:
                 {
-                    // Создаём города
-                    City X = new City("X");
-                    City Y = new City("Y");
+                    // Создание городов отдельно
+                    NewCity cityA = new NewCity("A");
+                    NewCity cityB = new NewCity("B");
+                    NewCity cityC = new NewCity("C");
 
-                    // Создаём список путей для города X
-                    List<Path> pathsForX = new ArrayList<>();
-                    pathsForX.add(new Path(Y, 2));
+                    // Добавляем пути через метод addPath()
+                    cityA.addPath(cityB, 5);
+                    cityA.addPath(cityC, 6);
 
-                    // Создаём город с путями
-                    NewCity cityXWithPaths = new NewCity("X", pathsForX);
+                    cityB.addPath(cityA, 1);
+                    cityB.addPath(cityC, 3);
 
-                    // Выводим город с путями
-                    System.out.println(cityXWithPaths);
+                    cityC.addPath(cityB, 1);
 
+                    // Альтернатива: можно создать город с путями сразу
+                    // Пример — создадим город G, который связан с A и B
+                    Map<NewCity, Integer> connectionsG = Map.of(
+                            cityA, 7,
+                            cityB, 8
+                    );
+                    NewCity cityG = new NewCity("G", connectionsG);
 
-                    // Создаём города без путей
-                    City Z = new City("Z");
-                    City W = new City("W");
-
-                    // Добавляем пути позже
-                    Z.addPath(W, 7);
-
-                    // Выводим города
-                    System.out.println(Z);
-                    System.out.println(W);
+                    // Печать информации о городах и их путях
+                    System.out.println(cityA);
+                    System.out.println(cityB);
+                    System.out.println(cityC);
+                    System.out.println(cityG);
 
                     break;
                 }
@@ -129,7 +131,10 @@ public class Main {
                     Fraction f1 = new Fraction(1, 3); // 1/3
                     Fraction f2 = new Fraction(2, 3); // 2/3
                     Fraction f3 = new Fraction(3, 4); // 3/4
-                    Fraction f4 = new Fraction(5, 6); // 5/6
+
+                    System.out.println("Первая дробь " + f1);
+                    System.out.println("Вторая дробь " + f1);
+                    System.out.println("Третья дробь " + f1);
 
                     // Пример сложения дробей
                     Fraction sumResult = f1.add(f2);
@@ -173,4 +178,3 @@ public class Main {
         }
     }
 }
-
