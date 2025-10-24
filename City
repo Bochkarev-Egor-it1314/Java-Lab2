@@ -5,31 +5,36 @@ public class City {
     private String name;
     private Map<City, Integer> ways;
 
+    // Конструктор
     public City(String name) {
         this.name = name;
         this.ways = new HashMap<>();
     }
 
+    // Геттеры
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Map<City, Integer> getWays() {
         return ways;
     }
 
+    // Сеттеры
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setWays(Map<City, Integer> ways) {
         this.ways = ways;
     }
 
+    // Добавление дороги
     public void addWays(City city, int way) {
         ways.put(city, way);
     }
 
+    // Возвращение строки
     @Override
     public String toString() {
         String result = name;
@@ -45,4 +50,3 @@ public class City {
         return result;
     }
 }
-
