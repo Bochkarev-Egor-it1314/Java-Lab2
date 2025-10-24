@@ -4,6 +4,7 @@ public class Name
     private String name;
     private String patronymic;
 
+    // Геттеры
     public String getSurname() {
         return surname;
     }
@@ -16,6 +17,7 @@ public class Name
         return patronymic;
     }
 
+    // Сеттеры
     public void setSurname(String surname) {
         this.surname = surname;
     }
@@ -28,6 +30,7 @@ public class Name
         this.patronymic = patronymic;
     }
 
+    // Возвращение строки
     @Override
     public String toString() {
         StringBuilder empty = new StringBuilder();
@@ -39,10 +42,10 @@ public class Name
         return empty.toString().trim();
     }
 
+    // Конструктор
     public Name(String surname, String name, String patronymic) {
         this.surname = (surname != null && !surname.isBlank()) ? surname : null;
         this.name = (name != null && !name.isBlank()) ? name : null;
         this.patronymic = (patronymic != null && !patronymic.isBlank()) ? patronymic : null;
     }
 }
-
