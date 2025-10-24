@@ -20,26 +20,30 @@ class NewCity {
         }
     }
 
+    // Геттеры
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Map<NewCity, Integer> getPath() {
         return path;
     }
 
+    // Сеттеры
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void setPath(Map<NewCity, Integer> path) {
         this.path = path;
     }
 
+    // Добавление пути
     public void addPath(NewCity city, int cost) {
         path.put(city, cost);
     }
 
+    // Возвращение строки
     @Override
     public String toString() {
         String result = name;
