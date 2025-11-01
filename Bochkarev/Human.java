@@ -1,0 +1,37 @@
+package ru.Bochkarev;
+
+public class Human
+{
+    private String name;
+    private int height;
+
+    // Геттеры
+    public String getName() {
+        return name;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    // Сеттеры
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    // Возвращение строки
+    @Override
+    public String toString() {
+        return this.name + ", рост: " + this.height;
+    }
+
+    // Конструктор с параметрами
+    public Human(String name, int height) {
+        this.name = name;
+        this.height = height;
+    }
+}

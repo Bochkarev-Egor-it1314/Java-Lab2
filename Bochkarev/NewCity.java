@@ -1,0 +1,63 @@
+package ru.Bochkarev;
+
+import java.util.HashMap;
+import java.util.Map;
+
+class NewCity {
+    private String name; // назание города
+    private Map<NewCity, Integer> path; // город > стоимость пути
+
+    // Конструктор только с названием
+    public NewCity(String name) {
+        this.name = name;
+        this.path = new HashMap<>();
+    }
+
+    // Конструктор с названием и набором связанных городов
+    public NewCity(String name, Map<NewCity, Integer> connections) {
+        this.name = name;
+        this.path = new HashMap<>();
+        if (connections != null) {
+            this.path.putAll(connections);
+        }
+    }
+
+    // Геттеры
+    public String getName() {
+        return name;
+    }
+
+    public Map<NewCity, Integer> getPath() {
+        return path;
+    }
+
+    // Сеттеры
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPath(Map<NewCity, Integer> path) {
+        this.path = path;
+    }
+
+    // Добавление пути
+    public void addPath(NewCity city, int cost) {
+        path.put(city, cost);
+    }
+
+    // Возвращение строки
+    @Override
+    public String toString() {
+        String result = name;
+        if (!path.isEmpty()) {
+            result += " -> ";
+            boolean first = true;
+            for (Map.Entry<NewCity, Integer> road : path.entrySet()) {
+                if (!first) result += ", ";
+                result += road.getKey().name + ":" + road.getValue();
+                first = false;
+            }
+        }
+        return result;
+    }
+}
